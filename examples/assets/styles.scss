@@ -114,11 +114,8 @@ button {
 
     button {
       transform: rotate(#{180 - 30 * $i}deg)
-    }
-  }
-}
-
-#canvas {
+        
+    #canvas {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -127,3 +124,8 @@ button {
   pointer-events: none;
   z-index: 100;
 }
+
+    }
+  }
+}
+
