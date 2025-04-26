@@ -591,3 +591,68 @@ class Parallax {
 }
 
 module.exports = Parallax
+
+window.addEventListener('load', function() {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw() {
+    const now = new Date();
+    const sec = now.getSeconds();
+    const min = now.getMinutes();
+    const hr = now.getHours();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const radius = Math.min(cx, cy) * 0.9;
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.rotate(((Math.PI * 2) / 12) * hr + ((Math.PI * 2) / 12) * (min / 60));
+    ctx.lineTo(0, -radius * 0.5);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.rotate(((Math.PI * 2) / 60) * min);
+    ctx.lineTo(0, -radius * 0.7);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.strokeStyle = '#f00';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.rotate(((Math.PI * 2) / 60) * sec);
+    ctx.lineTo(0, -radius * 0.9);
+    ctx.stroke();
+    ctx.restore();
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+});
+
