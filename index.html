@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parallax Clock Wallpaper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container" class="container">
+    
+    <!-- PARALLAX SCENE START -->
+    <ul id="scene" class="scene" data-friction-x="0.1" data-friction-y="0.1">
+
+      <!-- Background Layers -->
+      <li class="layer" data-depth="0.2">
+        <img src="https://via.placeholder.com/800x600/87CEEB/000000?text=Layer+1">
+      </li>
+
+      <li class="layer" data-depth="0.4">
+        <img src="https://via.placeholder.com/800x600/4682B4/FFFFFF?text=Layer+2">
+      </li>
+
+      <li class="layer" data-depth="0.6">
+        <img src="https://via.placeholder.com/800x600/1E90FF/FFFFFF?text=Layer+3">
+      </li>
+
+      <!-- CLOCK Layer -->
+      <li class="layer" data-depth="0.05">
+        <div id="clock">
+          <canvas id="canvas" width="300" height="300"></canvas>
+        </div>
+      </li>
+
+    </ul>
+    <!-- PARALLAX SCENE END -->
+
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="parallax.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
